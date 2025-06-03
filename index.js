@@ -26,7 +26,7 @@ const emojiMap = {
   "🔟": 10,
 };
 
-const RATING_EXPIRY_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+const RATING_EXPIRY_MS = 60 * 1000; // 7 days = 7 * 24 * 60 * 60 * 1000
 
 // Maps original message ID to forwarded message + ratings
 const messageRatings = new Map();
@@ -39,7 +39,7 @@ client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
 
   if (message.content === "!ping") {
-    message.reply("Pong!");
+    message.reply("Pong! 🏓");
     return;
   }
 
@@ -58,7 +58,6 @@ client.on("messageCreate", async (message) => {
       message.attachments.first().url
     }`
   );
-  await message.reply("Nice image!");
 
   const destChannel = await client.channels.fetch(
     process.env.SCRAN_DESTINATION_CHANNEL_ID
@@ -67,8 +66,8 @@ client.on("messageCreate", async (message) => {
   const files = imageAttachments.map((att) => att.url);
 
   const forwardedMsg = await destChannel.send({
-    content: `📨 Forwarded from ${message.author}:\n${
-      message.content || "*[no text]*"
+    content: `📨 Scran submitted by ${message.author}:\n${
+      message.content || "*[no description added]*"
     }\n\n⭐ Average Rating: **N/A**`,
     files,
   });
@@ -86,12 +85,15 @@ client.on("messageCreate", async (message) => {
     await message.react(emoji);
   }
 
-  await message.reply("Image forwarded!");
+  await message.reply("Scran Submitted Successfully!");
 });
 
 // Handle reactions to source messages
 client.on("messageReactionAdd", async (reaction, user) => {
   if (user.bot) return;
+
+  if (reaction.message.channel.id !== process.env.SCRAN_SOURCE_CHANNEL_ID)
+    return;
 
   if (reaction.partial) {
     try {
@@ -122,8 +124,8 @@ client.on("messageReactionAdd", async (reaction, user) => {
 
   const rounded = average.toFixed(2);
   const newContent =
-    `📨 Forwarded from ${ratingInfo.sourceMsg.author}:\n` +
-    `${ratingInfo.sourceMsg.content || "*[no text]*"}\n\n` +
+    `📨 Scran submitted by ${ratingInfo.sourceMsg.author}:\n` +
+    `${ratingInfo.sourceMsg.content || "*[no description added]*"}\n\n` +
     `⭐ Average Rating: **${rounded}** from ${values.length} rating(s)`;
 
   // Edit the forwarded message
@@ -139,6 +141,6 @@ setInterval(() => {
       messageRatings.delete(msgId);
     }
   }
-}, 24 * 60 * 60 * 1000); // every day
+}, 30 * 1000); // every day = 24 * 60 * 60 * 1000
 
 client.login(process.env.DISCORD_TOKEN);
