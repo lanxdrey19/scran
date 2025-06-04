@@ -1,4 +1,4 @@
-import { UserRating } from "./UserRating.js";
+const UserRating = require("./UserRating");
 
 class ScranScore {
   constructor() {

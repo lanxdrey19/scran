@@ -1,10 +1,10 @@
-import { ScranScore } from "./ScranScore.js";
+const ScranScore = require("./ScranScore");
 
 class ScranSubmission {
   constructor(
     sourceMsg,
     destMsg,
-    expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000
+    expiresAt = Date.now() + parseInt(process.env.SCRAN_EXPIRY_MS, 10)
   ) {
     this.sourceMsg = sourceMsg;
     this.destMsg = destMsg;
