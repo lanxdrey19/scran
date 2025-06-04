@@ -6,6 +6,9 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.1"
   }
 }
