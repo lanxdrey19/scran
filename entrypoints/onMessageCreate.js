@@ -1,8 +1,8 @@
-const submitScran = require("../usecases/submitScran");
-const DiscordMessageSender = require("../infrastructure/DiscordMessageSender");
-const DiscordMessageReactor = require("../infrastructure/DiscordMessageReactor");
+import submitScran from "../usecases/submitScran.js";
+import DiscordMessageSender from "../infrastructure/DiscordMessageSender.js";
+import DiscordMessageReactor from "../infrastructure/DiscordMessageReactor.js";
 
-module.exports = async function onMessageCreate(
+export default async function onMessageCreate(
   message,
   scranRepo,
   destinationChannel
@@ -26,4 +26,4 @@ module.exports = async function onMessageCreate(
     console.error("Failed to submit scran:", err);
     await message.reply("Failed to submit image for rating.");
   }
-};
+}

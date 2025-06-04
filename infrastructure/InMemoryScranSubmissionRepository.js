@@ -32,4 +32,4 @@ class InMemoryScranSubmissionRepository {
   }
 }
 
-module.exports = InMemoryScranSubmissionRepository;
+export default InMemoryScranSubmissionRepository;

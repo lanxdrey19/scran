@@ -5,4 +5,4 @@ class UserRating {
   }
 }
 
-module.exports = UserRating;
+export default UserRating;

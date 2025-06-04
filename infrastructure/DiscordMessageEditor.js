@@ -11,4 +11,4 @@ class DiscordMessageEditor {
   }
 }
 
-module.exports = DiscordMessageEditor;
+export default DiscordMessageEditor;

@@ -13,4 +13,4 @@ class DiscordMessageSender {
   }
 }
 
-module.exports = DiscordMessageSender;
+export default DiscordMessageSender;

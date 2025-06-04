@@ -1,12 +1,11 @@
-const ScranSubmission = require("../domain/ScranSubmission");
-const InMemoryScranSubmissionRepository = require("../infrastructure/InMemoryScranSubmissionRepository");
-const emojiMap = require("../constants/emojiMap");
+import ScranSubmission from "../domain/ScranSubmission.js";
+import emojiMap from "../constants/emojiMap.js";
 
 async function submitScran(
   sourceMsg,
   messageSender,
   messageReactor,
-  scranRepo = InMemoryScranSubmissionRepository.getInstance()
+  scranRepo
 ) {
   const imageAttachment = sourceMsg.attachments.find((att) =>
     att.contentType?.startsWith("image/")
@@ -30,4 +29,4 @@ async function submitScran(
   scranRepo.addOrUpdate(submission);
 }
 
-module.exports = submitScran;
+export default submitScran;

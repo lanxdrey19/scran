@@ -1,4 +1,4 @@
-const ScranScore = require("./ScranScore");
+import ScranScore from "./ScranScore.js";
 
 class ScranSubmission {
   constructor(
@@ -17,4 +17,4 @@ class ScranSubmission {
   }
 }
 
-module.exports = ScranSubmission;
+export default ScranSubmission;

@@ -1,4 +1,4 @@
-const UserRating = require("./UserRating");
+import UserRating from "./UserRating.js";
 
 class ScranScore {
   constructor() {
@@ -35,4 +35,4 @@ class ScranScore {
   }
 }
 
-module.exports = ScranScore;
+export default ScranScore;

@@ -12,4 +12,4 @@ const emojiMap = {
   "🔟": 10,
 };
 
-module.exports = emojiMap;
+export default emojiMap;

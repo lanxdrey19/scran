@@ -10,4 +10,4 @@ class DiscordMessageReactor {
   }
 }
 
-module.exports = DiscordMessageReactor;
+export default DiscordMessageReactor;

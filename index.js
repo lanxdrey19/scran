@@ -1,9 +1,10 @@
-const { Client, GatewayIntentBits, Partials } = require("discord.js");
-const InMemoryScranSubmissionRepository = require("./infrastructure/InMemoryScranSubmissionRepository");
-const startSchedulers = require("./entrypoints/scheduler");
-const onMessageCreate = require("./entrypoints/onMessageCreate");
-const onMessageReactionAdd = require("./entrypoints/onMessageReactionAdd");
-require("dotenv").config();
+import { Client, GatewayIntentBits, Partials } from "discord.js";
+import InMemoryScranSubmissionRepository from "./infrastructure/InMemoryScranSubmissionRepository.js";
+import startSchedulers from "./entrypoints/scheduler.js";
+import onMessageCreate from "./entrypoints/onMessageCreate.js";
+import onMessageReactionAdd from "./entrypoints/onMessageReactionAdd.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const client = new Client({
   intents: [

@@ -1,6 +1,6 @@
-const emojiMap = require("../constants/emojiMap");
+import emojiMap from "../constants/emojiMap.js";
 
-module.exports = async function rateScran(
+export default async function rateScran(
   messageId,
   userId,
   emoji,
@@ -26,4 +26,4 @@ module.exports = async function rateScran(
     `⭐ Average Rating: **${avg}** from ${count} rating(s)`;
 
   await editor.editMessage(editedContent);
-};
+}

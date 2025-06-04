@@ -1,4 +1,4 @@
-const expireOldSubmissions = require("../usecases/expireOldSubmissions");
+import expireOldSubmissions from "../usecases/expireOldSubmissions.js";
 
 function startSchedulers(scranRepo) {
   const cleanupCheckInterval =
@@ -9,4 +9,4 @@ function startSchedulers(scranRepo) {
   }, cleanupCheckInterval);
 }
 
-module.exports = startSchedulers;
+export default startSchedulers;

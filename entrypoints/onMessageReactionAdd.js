@@ -1,7 +1,7 @@
-const rateScran = require("../usecases/rateScran");
-const DiscordMessageEditor = require("../infrastructure/DiscordMessageEditor");
+import rateScran from "../usecases/rateScran.js";
+import DiscordMessageEditor from "../infrastructure/DiscordMessageEditor.js";
 
-module.exports = async (reaction, user, scranRepo) => {
+export default async (reaction, user, scranRepo) => {
   if (user.bot) return;
 
   if (reaction.partial) {

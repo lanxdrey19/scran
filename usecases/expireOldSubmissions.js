@@ -12,4 +12,4 @@ function expireOldSubmissions(scranRepo) {
   scranRepo.deleteAll((sub) => sub.isExpired());
 }
 
-module.exports = expireOldSubmissions;
+export default expireOldSubmissions;
