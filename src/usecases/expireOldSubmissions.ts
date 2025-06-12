@@ -1,5 +1,8 @@
-function expireOldSubmissions(scranRepo) {
-  const allSubmissions = scranRepo.getAll();
+import IRepository from "../interfaces/IRepository.js";
+import ScranSubmission from "../domain/ScranSubmission.js";
+
+function expireOldSubmissions(scranRepo: IRepository): void {
+  const allSubmissions: ScranSubmission[] = scranRepo.getAll();
   const expiredSubmissions = allSubmissions.filter((sub) => sub.isExpired());
 
   if (expiredSubmissions.length > 0) {

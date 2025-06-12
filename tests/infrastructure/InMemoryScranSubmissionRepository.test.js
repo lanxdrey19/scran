@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import InMemoryScranSubmissionRepository from "../../infrastructure/InMemoryScranSubmissionRepository";
+import InMemoryScranSubmissionRepository from "../../src/infrastructure/InMemoryScranSubmissionRepository";
 
 function createMockSubmission(id, content = "mock") {
   return {
@@ -21,9 +21,9 @@ describe("InMemoryScranSubmissionRepository", () => {
     repo = new InMemoryScranSubmissionRepository();
   });
 
-  it("should save and retrieve a submission by message ID", () => {
+  it("should add and retrieve a submission by message ID", () => {
     const submission = createMockSubmission("123");
-    repo.save(submission);
+    repo.add(submission);
 
     const result = repo.findByMessageId("123");
     expect(result).toBe(submission);
@@ -37,8 +37,8 @@ describe("InMemoryScranSubmissionRepository", () => {
   it("should delete submissions matching predicate", () => {
     const a = createMockSubmission("a");
     const b = createMockSubmission("b");
-    repo.save(a);
-    repo.save(b);
+    repo.add(a);
+    repo.add(b);
 
     repo.deleteAll((sub) => sub.destMsg.id === "a");
 
@@ -49,7 +49,7 @@ describe("InMemoryScranSubmissionRepository", () => {
 
   it("getAll should return a shallow copy of submissions", () => {
     const s = createMockSubmission("x");
-    repo.save(s);
+    repo.add(s);
 
     const all = repo.getAll();
     expect(all).toEqual([s]);
@@ -66,7 +66,7 @@ describe("InMemoryScranSubmissionRepository", () => {
     const original = createMockSubmission("123", "original");
     const updated = createMockSubmission("123", "updated");
 
-    repo.save(original);
+    repo.add(original);
     repo.addOrUpdate(updated);
 
     const stored = repo.findByMessageId("123");

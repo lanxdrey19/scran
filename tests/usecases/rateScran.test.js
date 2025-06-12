@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import rateScran from "../../usecases/rateScran.js";
-import ScranScore from "../../domain/ScranScore.js";
+import rateScran from "../../src/usecases/rateScran";
+import ScranScore from "../../src/domain/ScranScore";
 
 describe("rateScran", () => {
   let scranRepo;

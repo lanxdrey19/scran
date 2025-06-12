@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import rateScran from "../../usecases/rateScran.js";
-import InMemoryScranSubmissionRepository from "../../infrastructure/InMemoryScranSubmissionRepository.js";
-import ScranSubmission from "../../domain/ScranSubmission.js";
+import rateScran from "../../src/usecases/rateScran";
+import InMemoryScranSubmissionRepository from "../../src/infrastructure/InMemoryScranSubmissionRepository";
+import ScranSubmission from "../../src/domain/ScranSubmission";
 
 const createMockEditor = () => ({
   editMessage: vi.fn().mockResolvedValue(undefined),
@@ -25,7 +25,7 @@ describe("rateScran integration", () => {
     };
 
     submission = new ScranSubmission(sourceMsg, destMsg, Date.now() + 60000);
-    scranRepo.save(submission);
+    scranRepo.add(submission);
   });
 
   it("should update score, calculate average, and edit message", async () => {

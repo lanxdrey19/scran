@@ -6,10 +6,18 @@
     "express": "^5.1.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts",
     "test": "vitest"
   },
   "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.1",
+    "@types/node-fetch": "^2.6.12",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.20.2",
+    "typescript": "^5.8.3",
     "vitest": "^3.2.1"
   }
 }

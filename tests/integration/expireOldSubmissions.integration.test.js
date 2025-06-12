@@ -1,6 +1,6 @@
-import InMemoryScranSubmissionRepository from "../../infrastructure/InMemoryScranSubmissionRepository.js";
-import expireOldSubmissions from "../../usecases/expireOldSubmissions.js";
-import ScranSubmission from "../../domain/ScranSubmission.js";
+import InMemoryScranSubmissionRepository from "../../src/infrastructure/InMemoryScranSubmissionRepository";
+import expireOldSubmissions from "../../src/usecases/expireOldSubmissions";
+import ScranSubmission from "../../src/domain/ScranSubmission";
 
 describe("Integration - expireOldSubmissions", () => {
   let scranRepo;
@@ -22,8 +22,8 @@ describe("Integration - expireOldSubmissions", () => {
       now + 1000
     );
 
-    scranRepo.save(expiredSubmission);
-    scranRepo.save(activeSubmission);
+    scranRepo.add(expiredSubmission);
+    scranRepo.add(activeSubmission);
   });
 
   it("removes only expired submissions", () => {

@@ -1,12 +1,22 @@
 import ScranSubmission from "../domain/ScranSubmission.js";
 import emojiMap from "../constants/emojiMap.js";
+import IRepository from "../interfaces/IRepository.js";
+import { Message, Attachment } from "discord.js";
 
-async function submitScran(
-  sourceMsg,
-  messageSender,
-  messageReactor,
-  scranRepo
-) {
+interface IMessageSender {
+  sendMessage(content: string, imageUrls: string[]): Promise<Message>;
+}
+
+interface IMessageReactor {
+  addReactions(message: Message, emojis: string[]): Promise<void>;
+}
+
+export default async function submitScran(
+  sourceMsg: Message,
+  messageSender: IMessageSender,
+  messageReactor: IMessageReactor,
+  scranRepo: IRepository
+): Promise<void> {
   const imageAttachment = sourceMsg.attachments.find((att) =>
     att.contentType?.startsWith("image/")
   );
@@ -22,11 +32,8 @@ async function submitScran(
   ]);
 
   const emojiReactions = Object.keys(emojiMap);
-
   await messageReactor.addReactions(forwardedMsg, emojiReactions);
 
   const submission = new ScranSubmission(sourceMsg, forwardedMsg);
   scranRepo.addOrUpdate(submission);
 }
-
-export default submitScran;

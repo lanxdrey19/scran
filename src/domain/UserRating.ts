@@ -1,5 +1,8 @@
 class UserRating {
-  constructor(userId, score) {
+  userId: string;
+  score: number;
+
+  constructor(userId: string, score: number) {
     this.userId = userId;
     this.score = score;
   }

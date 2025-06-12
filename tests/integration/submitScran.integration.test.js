@@ -1,7 +1,7 @@
-import submitScran from "../../usecases/submitScran.js";
-import InMemoryScranSubmissionRepository from "../../infrastructure/InMemoryScranSubmissionRepository.js";
-import ScranSubmission from "../../domain/ScranSubmission.js";
-import emojiMap from "../../constants/emojiMap.js";
+import submitScran from "../../src/usecases/submitScran";
+import InMemoryScranSubmissionRepository from "../../src/infrastructure/InMemoryScranSubmissionRepository";
+import ScranSubmission from "../../src/domain/ScranSubmission";
+import emojiMap from "../../src/constants/emojiMap";
 
 describe("submitScran", () => {
   let scranRepo;

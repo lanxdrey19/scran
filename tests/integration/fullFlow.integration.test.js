@@ -1,7 +1,7 @@
-import submitScran from "../../usecases/submitScran.js";
-import rateScran from "../../usecases/rateScran.js";
-import expireOldSubmissions from "../../usecases/expireOldSubmissions.js";
-import InMemoryScranSubmissionRepository from "../../infrastructure/InMemoryScranSubmissionRepository.js";
+import submitScran from "../../src/usecases/submitScran";
+import rateScran from "../../src/usecases/rateScran";
+import expireOldSubmissions from "../../src/usecases/expireOldSubmissions";
+import InMemoryScranSubmissionRepository from "../../src/infrastructure/InMemoryScranSubmissionRepository";
 
 describe("Full Discord lifecycle integration", () => {
   let scranRepo;

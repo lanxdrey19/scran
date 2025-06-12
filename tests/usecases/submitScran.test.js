@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
-import submitScran from "../../usecases/submitScran.js";
-import ScranSubmission from "../../domain/ScranSubmission.js";
-import emojiMap from "../../constants/emojiMap.js";
+import submitScran from "../../src/usecases/submitScran";
+import ScranSubmission from "../../src/domain/ScranSubmission";
+import emojiMap from "../../src/constants/emojiMap";
 
 describe("submitScran", () => {
   const createMockSourceMsg = () => ({

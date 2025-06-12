@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import expireOldSubmissions from "../../usecases/expireOldSubmissions.js";
+import expireOldSubmissions from "../../src/usecases/expireOldSubmissions";
 
 describe("expireOldSubmissions", () => {
   let scranRepo;

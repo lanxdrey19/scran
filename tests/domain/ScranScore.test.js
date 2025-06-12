@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import ScranScore from "../../domain/ScranScore.js";
+import ScranScore from "../../src/domain/ScranScore";
 
 describe("ScranScore", () => {
   it("starts with 0 submissions", () => {

@@ -1,4 +1,4 @@
-const emojiMap = {
+const emojiMap: Record<string, number> = {
   "0️⃣": 0,
   "1️⃣": 1,
   "2️⃣": 2,
