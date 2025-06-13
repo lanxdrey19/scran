@@ -1,7 +1,6 @@
 # 🧀 Scran Bot
 
-A fun and lightweight **Discord bot** for submitting and rating, [_scrans_](https://www.urbandictionary.com/define.php?term=scran) 🍽️.  
-Built with ❤️ using **Node.js**, **Express**, and **GitHub Actions**.
+A fun and lightweight **Discord bot** for submitting and rating, [_scrans_](https://www.urbandictionary.com/define.php?term=scran) 🍽️.
 
 ---
 
@@ -25,6 +24,7 @@ This bot is designed to work within **Discord**. It listens to messages, reacts 
 ## 🛠️ Built With
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
 [![NodeJS](https://img.shields.io/badge/Node.js-6DA55F?logo=node.js&logoColor=white)](#)
 [![Express.js](https://img.shields.io/badge/Express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB)](#)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](#)
@@ -39,7 +39,6 @@ This bot is designed to work within **Discord**. It listens to messages, reacts 
 - ⭐ React with emojis to rate submissions (0–10)
 - 🔄 Update average ratings in real-time
 - ⏰ Automatically expire old scran posts
-- ✅ Tested with full integration coverage
 - 🆙 Uptime monitored with [Uptime Robot](https://stats.uptimerobot.com/eiZsELEWh6)
 
 ---
