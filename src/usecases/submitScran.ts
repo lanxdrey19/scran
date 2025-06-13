@@ -1,20 +1,14 @@
 import ScranSubmission from "../domain/ScranSubmission.js";
 import emojiMap from "../constants/emojiMap.js";
 import IRepository from "../interfaces/IRepository.js";
-import { Message, Attachment } from "discord.js";
-
-interface IMessageSender {
-  sendMessage(content: string, imageUrls: string[]): Promise<Message>;
-}
-
-interface IMessageReactor {
-  addReactions(message: Message, emojis: string[]): Promise<void>;
-}
+import ISender from "../interfaces/ISender.js";
+import IReactor from "../interfaces/IReactor.js";
+import IMessage from "../domain/IMessage.js";
 
 export default async function submitScran(
-  sourceMsg: Message,
-  messageSender: IMessageSender,
-  messageReactor: IMessageReactor,
+  sourceMsg: IMessage,
+  messageSender: ISender,
+  messageReactor: IReactor,
   scranRepo: IRepository
 ): Promise<void> {
   const imageAttachment = sourceMsg.attachments.find((att) =>

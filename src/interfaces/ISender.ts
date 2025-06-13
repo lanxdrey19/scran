@@ -1,5 +1,5 @@
-import { Message } from "discord.js";
+import IMessage from "../domain/IMessage.js";
 
-export default interface IMessageSender {
-  sendMessage(content: string, imageUrls: string[]): Promise<Message>;
+export default interface ISender {
+  sendMessage(content: string, imageUrls: string[]): Promise<IMessage>;
 }

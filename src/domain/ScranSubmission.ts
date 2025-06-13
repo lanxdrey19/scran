@@ -1,15 +1,15 @@
-import { Message } from "discord.js";
+import IMessage from "./IMessage.js";
 import ScranScore from "./ScranScore.js";
 
 class ScranSubmission {
-  sourceMsg: Message;
-  destMsg: Message;
+  sourceMsg: IMessage;
+  destMsg: IMessage;
   score: ScranScore;
   expiresAt: number;
 
   constructor(
-    sourceMsg: Message,
-    destMsg: Message,
+    sourceMsg: IMessage,
+    destMsg: IMessage,
     expiresAt: number = Date.now() + parseInt(process.env.SCRAN_EXPIRY_MS || "604800000", 10)
   ) {
     this.sourceMsg = sourceMsg;

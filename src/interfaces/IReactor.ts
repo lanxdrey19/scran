@@ -1,5 +1,5 @@
-import { Message } from "discord.js";
+import IMessage from "../domain/IMessage.js";
 
-export default interface IMessageReactor {
-  addReactions(message: Message, emojis: string[]): Promise<void>;
+export default interface IReactor {
+  addReactions(message: IMessage, emojis: string[]): Promise<void>;
 }

@@ -1,8 +1,8 @@
-import { Message } from "discord.js";
-import IMessageReactor from "../interfaces/IReactor.js"; 
+import IReactor from "../interfaces/IReactor.js"; 
+import IMessage from "../domain/IMessage.js";
 
-class DiscordMessageReactor implements IMessageReactor {
-  async addReactions(message: Message, emojis: string[]): Promise<void> {
+class DiscordMessageReactor implements IReactor {
+  async addReactions(message: IMessage, emojis: string[]): Promise<void> {
     for (const emoji of emojis) {
       try {
         await message.react(emoji);
