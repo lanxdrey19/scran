@@ -1,4 +1,3 @@
-import winston from 'winston';
 import { createLogger, format, transports } from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
 import { TransformableInfo } from 'logform'; 
@@ -9,7 +8,7 @@ const logFormat = format.printf((info: TransformableInfo) => {
   return `[${timestamp}] [${info.level.toUpperCase()}] ${info.message}`;
 });
 
-const logger = winston.createLogger({
+const logger = createLogger({
   level: process.env.LOG_LEVEL || 'info',
   format: format.combine(
     format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
