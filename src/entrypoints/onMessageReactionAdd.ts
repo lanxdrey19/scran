@@ -2,6 +2,7 @@ import { MessageReaction, PartialMessageReaction, User, PartialUser } from "disc
 import rateScran from "../usecases/rateScran.js";
 import DiscordMessageEditor from "../infrastructure/DiscordMessageEditor.js";
 import IScranRepo from "../interfaces/IRepository.js"; 
+import logger from "../logger.js";
 
 export default async function onReactionAdd(
   reaction: MessageReaction | PartialMessageReaction,
@@ -14,7 +15,7 @@ export default async function onReactionAdd(
     try {
       await reaction.fetch();
     } catch (err: unknown) {
-      console.error("Failed to fetch reaction:", err);
+      logger.error("Failed to fetch reaction:", err);
       return;
     }
   }
@@ -31,9 +32,9 @@ export default async function onReactionAdd(
     );
   } catch (err: unknown) {
     if (err instanceof Error) {
-      console.warn(`Could not rate scran: ${err.message}`);
+      logger.error(`Could not rate scran: ${err.message}`);
     } else {
-      console.warn("Could not rate scran due to unknown error.");
+      logger.error("Could not rate scran due to unknown error.");
     }
   }
 }

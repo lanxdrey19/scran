@@ -4,6 +4,7 @@ import DiscordMessageSender from "../infrastructure/DiscordMessageSender.js";
 import DiscordMessageReactor from "../infrastructure/DiscordMessageReactor.js";
 import IScranRepo from "../interfaces/IRepository.js"; 
 import { toIMessage } from "../infrastructure/DiscordMessageAdaptor.js";
+import logger from "../logger.js";
 
 
 export default async function onMessageCreate(
@@ -33,7 +34,7 @@ export default async function onMessageCreate(
   try {
     await submitScran(toIMessage(message), messageSender, messageReactor, scranRepo);
   } catch (err: unknown) {
-    console.error("Failed to submit scran:", err);
+    logger.error("Failed to submit scran:", err);
     await message.reply("Failed to submit image for rating.");
   }
 }

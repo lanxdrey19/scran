@@ -1,5 +1,6 @@
 import IReactor from "../interfaces/IReactor.js"; 
 import IMessage from "../domain/IMessage.js";
+import logger from "../logger.js";
 
 class DiscordMessageReactor implements IReactor {
   async addReactions(message: IMessage, emojis: string[]): Promise<void> {
@@ -8,9 +9,9 @@ class DiscordMessageReactor implements IReactor {
         await message.react(emoji);
       } catch (err: unknown) {
         if (err instanceof Error) {
-          console.warn(`Failed to react with ${emoji}:`, err.message);
+          logger.error(`Failed to react with ${emoji}:`, err.message);
         } else {
-          console.warn(`Failed to react with ${emoji}: Unknown error`, err);
+          logger.error(`Failed to react with ${emoji}: Unknown error`, err);
         }
       }
     }

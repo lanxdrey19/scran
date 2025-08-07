@@ -1,5 +1,6 @@
 import IEditor from "../interfaces/IEditor.js"; 
 import { Message, PartialMessage } from "discord.js"; 
+import logger from "../logger.js";
 
 class DiscordMessageEditor implements IEditor {
   private message: PartialMessage | Message<boolean>;
@@ -12,7 +13,7 @@ class DiscordMessageEditor implements IEditor {
     try {
       await this.message.edit({ content: newContent });
     } catch (err) {
-      console.error("Failed to edit message:", err);
+      logger.error("Failed to edit message:", err);
     }
   }
 }

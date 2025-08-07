@@ -14,6 +14,7 @@ import InMemoryScranSubmissionRepository from "./infrastructure/InMemoryScranSub
 import startSchedulers from "./entrypoints/scheduler.js";
 import onMessageCreate from "./entrypoints/onMessageCreate.js";
 import onMessageReactionAdd from "./entrypoints/onMessageReactionAdd.js";
+import logger from "./logger.js";
 
 dotenv.config();
 
@@ -34,7 +35,7 @@ startSchedulers(scranRepo);
 
 client.once("ready", () => {
   if (client.user) {
-    console.log(`🤖 Logged in as ${client.user.tag}`);
+    logger.info(`🤖 Logged in as ${client.user.tag}`);
   }
 });
 
@@ -50,7 +51,7 @@ client.on("messageCreate", async (message: Message) => {
 
     await onMessageCreate(message, scranRepo, channel as TextChannel);
   } catch (err: unknown) {
-    console.error("Error in messageCreate handler:", err);
+    logger.error("Error in messageCreate handler:", err);
   }
 });
 
@@ -60,7 +61,7 @@ client.on(
     try {
       await onMessageReactionAdd(reaction, user, scranRepo);
     } catch (err: unknown) {
-      console.error("Error in messageReactionAdd handler:", err);
+      logger.error("Error in messageReactionAdd handler:", err);
     }
   }
 );

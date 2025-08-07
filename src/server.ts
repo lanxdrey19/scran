@@ -1,4 +1,5 @@
 import "./index.js";
+import logger from "./logger.js";
 import express, { Request, Response } from "express";
 
 const app = express();
@@ -9,5 +10,5 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🌐 Web server is listening on port ${PORT}`);
+  logger.info(`🌐 Web server is listening on port ${PORT}`);
 });

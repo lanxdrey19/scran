@@ -1,9 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import expireOldSubmissions from "../../src/usecases/expireOldSubmissions";
+import logger from "../../src/logger";
 
 describe("expireOldSubmissions", () => {
   let scranRepo;
-  let consoleLogSpy;
+  let loggerSpy;
 
   const createSubmission = (id, expired) => ({
     destMsg: { id },
@@ -11,7 +12,7 @@ describe("expireOldSubmissions", () => {
   });
 
   beforeEach(() => {
-    consoleLogSpy = vi.spyOn(console, "log").mockImplementation(() => {});
+    loggerSpy = vi.spyOn(logger, "debug").mockImplementation(() => {});
     scranRepo = {
       getAll: vi.fn(),
       deleteAll: vi.fn(),
@@ -31,11 +32,11 @@ describe("expireOldSubmissions", () => {
 
     expireOldSubmissions(scranRepo);
 
-    expect(consoleLogSpy).toHaveBeenCalledWith(
+    expect(loggerSpy).toHaveBeenCalledWith(
       "🗑 Expiring the following submissions:"
     );
-    expect(consoleLogSpy).toHaveBeenCalledWith("- Message ID: 123");
-    expect(consoleLogSpy).toHaveBeenCalledWith("- Message ID: 456");
+    expect(loggerSpy).toHaveBeenCalledWith("- Message ID: 123");
+    expect(loggerSpy).toHaveBeenCalledWith("- Message ID: 456");
 
     expect(scranRepo.deleteAll).toHaveBeenCalledWith(expect.any(Function));
     const predicate = scranRepo.deleteAll.mock.calls[0][0];
@@ -53,7 +54,7 @@ describe("expireOldSubmissions", () => {
 
     expireOldSubmissions(scranRepo);
 
-    expect(consoleLogSpy).not.toHaveBeenCalled();
+    expect(loggerSpy).not.toHaveBeenCalled();
     expect(scranRepo.deleteAll).toHaveBeenCalledWith(expect.any(Function));
     const predicate = scranRepo.deleteAll.mock.calls[0][0];
 
