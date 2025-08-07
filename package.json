@@ -4,7 +4,6 @@
     "discord.js": "^14.19.3",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "logform": "^2.7.0",
     "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0"
   },
@@ -16,10 +15,8 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
-    "@types/logform": "^1.2.0",
     "@types/node": "^24.0.1",
     "@types/node-fetch": "^2.6.12",
-    "@types/winston": "^2.4.4",
     "@types/ws": "^8.18.1",
     "tsx": "^4.20.2",
     "typescript": "^5.8.3",
