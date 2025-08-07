@@ -16,8 +16,10 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
+    "@types/logform": "^1.2.0",
     "@types/node": "^24.0.1",
     "@types/node-fetch": "^2.6.12",
+    "@types/winston": "^2.4.4",
     "@types/ws": "^8.18.1",
     "tsx": "^4.20.2",
     "typescript": "^5.8.3",
